@@ -13,4 +13,6 @@ public interface MenuMapper {
 
 	List<MenuDTO> getMenuList();
 
+	void deleteMenu(MenuDTO menuDTO);
+
 }
