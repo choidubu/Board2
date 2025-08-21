@@ -1,1 +1,1 @@
-# SpringBoard# SpringBoard2
+새 메뉴 추가 페이지 클릭 후 입력하면 목록에 나타남
