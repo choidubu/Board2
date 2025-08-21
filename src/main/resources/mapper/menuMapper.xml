@@ -10,6 +10,17 @@
       ORDER  BY  MENU_SEQ ASC
   
   </select>
+  
+  <!-- 메뉴조회 -->
+  <select id="getMenu"
+          resultType = "com.board.menus.domain.MenuDTO" >
+    
+    SELECT   MENU_ID, MENU_NAME, MENU_SEQ
+     FROM    MENUS
+     WHERE   MENU_ID =  #{ menu_id  }
+  
+  </select>
+  
 
   <!-- 메뉴 추가 -->
   <insert id="insertMenu">  
@@ -29,6 +40,32 @@
    
   </insert> 
   
+  <!-- 메뉴 추가 2 -->
+  <insert  id="insertMenu2">
+  
+    INSERT   INTO   MENUS
+    (
+       MENU_ID,
+       MENU_NAME,
+       MENU_SEQ
+    )
+    VALUES 
+    (
+    	(
+    	   SELECT  'MENU' || 
+                TRIM( TO_CHAR(NVL(SUBSTR(MAX(MENU_ID), 5, 2), 0) + 1, '00')) 
+            FROM  MENUS    	
+    	),
+    	#{  menu_name   },
+    	(
+    	   SELECT  NVL( MAX(MENU_SEQ), 0) + 1 FROM MENUS
+    	)
+    )
+  
+  
+  </insert>
+  
+  
   <!-- 목록삭제 -->
   <delete id="deleteMenu">
    
@@ -37,8 +74,15 @@
   
   </delete>
   
+  <!-- 메뉴 수정 -->
+  <update id="update">
+   
+     UPDATE   MENUS 
+      SET     MENU_NAME  = #{ menu_name },
+              MENU_SEQ   = #{ menu_seq  }
+      WHERE   MENU_ID = #{ menu_id }
   
-  
+  </update>
   
   
   

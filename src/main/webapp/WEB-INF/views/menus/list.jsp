@@ -27,6 +27,7 @@
        }      
    }
    
+   td[colspan="5"] {
        text-align : right; 
    }  	   
    
@@ -54,6 +55,7 @@
 	  <tr>
 	    <td colspan="5">
 	      <a href="/Menus/WriteForm">새 메뉴 추가</a>
+	      <a href="/Menus/WriteForm2">새 메뉴 추가2</a>
 	    </td>
 	  </tr>
 	
